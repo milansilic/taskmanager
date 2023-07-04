@@ -1,0 +1,103 @@
+{
+  "task": [
+    {
+      "id": 5,
+      "activity": "work on monosoftware project",
+      "frequency": "daily",
+      "resources": "time",
+      "price": "",
+      "importanceLevel": "5/5",
+      "urgencyLevel": "5/5"
+    },
+    {
+      "id": 6,
+      "activity": "take kids outside",
+      "frequency": "daily",
+      "resources": "time",
+      "price": "",
+      "importanceLevel": "5/5",
+      "urgencyLevel": "2/5"
+    },
+    {
+      "id": 7,
+      "activity": "grocery shopping",
+      "frequency": "every 2 days",
+      "resources": "time and money",
+      "price": "15E",
+      "importanceLevel": "4/5",
+      "urgencyLevel": "3/5"
+    },
+    {
+      "id": 8,
+      "activity": "study react",
+      "frequency": "weekly",
+      "resources": "",
+      "price": "",
+      "importanceLevel": "4/5",
+      "urgencyLevel": "4/5"
+    },
+    {
+      "id": 9,
+      "activity": "whash dishes",
+      "frequency": "daily",
+      "resources": "",
+      "price": "",
+      "importanceLevel": "2/5",
+      "urgencyLevel": "1/5"
+    },
+    {
+      "id": 10,
+      "activity": "apply for jobs",
+      "frequency": "weekly",
+      "resources": "",
+      "price": "",
+      "importanceLevel": "5/5",
+      "urgencyLevel": "3/5"
+    },
+    {
+      "id": 11,
+      "activity": "go hiking",
+      "frequency": "monthly",
+      "resources": "day off",
+      "price": "10E",
+      "importanceLevel": "4/5",
+      "urgencyLevel": "1/5"
+    },
+    {
+      "id": 12,
+      "activity": "fix the toilete",
+      "frequency": "once",
+      "resources": "",
+      "price": "200E",
+      "importanceLevel": "3/5",
+      "urgencyLevel": "3/5"
+    },
+    {
+      "id": 13,
+      "activity": "clean up apartment",
+      "frequency": "weekly",
+      "resources": "",
+      "price": "",
+      "importanceLevel": "3/5",
+      "urgencyLevel": "2/5"
+    },
+    {
+      "id": 14,
+      "activity": "sell the condo",
+      "frequency": "once",
+      "resources": "",
+      "price": "",
+      "importanceLevel": "5/5",
+      "urgencyLevel": "1/5"
+    },
+    {
+      "id": 15,
+      "activity": "visit the parents",
+      "frequency": "random",
+      "resources": "",
+      "price": "",
+      "importanceLevel": "2/5",
+      "urgencyLevel": "1/5"
+    }
+  ]
+}

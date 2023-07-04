@@ -1,0 +1,31 @@
+
+@import './styles/base/reset.scss';
+@import './styles/base/classes.scss';
+@import './fonts/fonts.scss';
+
+:root {
+  font-family: 'Outfit' ,'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  --col-black: #000;
+  --col-dark: #252525;
+  --col-grey: #bcd3e5;
+  --col-light: #fff;
+  --col-green: #00FFA6;
+  --col-green2: #B5E532;
+  --col-red: #E66C67;
+  --col-red2: #ff6699;
+  --col-yel: #DFE639;
+  --col-bckgrnd-darker:#4279a6;
+  --col-bckgrnd-dark:#4782b3;
+  --col-bckgrnd:#4b8abd;
+  --col-bckgrnd-light:#5aa6e0;
+  --col-bckgrnd-lighter:#65aee5;
+  --col-bckgrnd-lightest:#8abee5;
+  --col-analogous1:#4BBDB7;
+  --col-analogous2:#4B51BD;
+}

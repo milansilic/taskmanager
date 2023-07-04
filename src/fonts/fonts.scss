@@ -1,0 +1,61 @@
+@font-face {
+    font-family: 'Outfit';
+    src: url('Outfit-Bold.eot');
+    src: url('Outfit-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Outfit-Bold.woff2') format('woff2'),
+        url('Outfit-Bold.woff') format('woff'),
+        url('Outfit-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Outfit';
+    src: url('Outfit-SemiBold.eot');
+    src: url('Outfit-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('Outfit-SemiBold.woff2') format('woff2'),
+        url('Outfit-SemiBold.woff') format('woff'),
+        url('Outfit-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Outfit';
+    src: url('Outfit-Regular.eot');
+    src: local('Outfit-Regular'),
+        url('Outfit-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Outfit-Regular.woff2') format('woff2'),
+        url('Outfit-Regular.woff') format('woff'),
+        url('Outfit-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Outfit';
+    src: url('Outfit-Light.eot');
+    src: url('Outfit-Light.eot?#iefix') format('embedded-opentype'),
+        url('Outfit-Light.woff2') format('woff2'),
+        url('Outfit-Light.woff') format('woff'),
+        url('Outfit-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Averta';
+    src: url('AvertaDemo-Regular.eot');
+    src: local('AvertaDemo-Regular'),
+        url('AvertaDemo-Regular.eot?#iefix') format('embedded-opentype'),
+        url('AvertaDemo-Regular.woff2') format('woff2'),
+        url('AvertaDemo-Regular.woff') format('woff'),
+        url('AvertaDemo-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

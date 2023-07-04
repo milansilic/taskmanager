@@ -1,0 +1,199 @@
+// .passive {
+//     background-color: var(--col-bckgrnd-darker);
+// }
+
+.task-table {
+    position: relative;
+}
+
+.filter-box {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    outline: 1px solid var(--col-bckgrnd-lighter);
+    padding: .7rem .2rem .7rem .7rem;
+    transform: translateY(-180%);
+
+    label {
+        margin-right: .4rem;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+    input {
+        font-size: 1rem;
+        letter-spacing: .012em;
+    }
+}
+
+table {
+    width: 100%;
+    margin-bottom: .26rem;
+
+    th,
+    td {
+        padding: .8rem 0;
+
+        &:first-of-type {
+            display: none;
+        }
+
+        &:nth-of-type(2) {
+            padding-left: 1.2rem;
+        }
+    }
+
+    th {
+        color: var(--col-light);
+        font-size: .7rem;
+        font-weight: 400;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        text-align: left;
+
+        img {
+            width: 12px;
+            transform: translate(.4rem, .1rem) rotate(0);
+            transition: .2s ease-out;
+
+            &.desc {
+                transform: translate(.4rem, .1rem) rotate(180deg);
+            }
+        }
+    }
+
+    td {
+        font-family: 'Averta', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 1rem;
+        font-weight: 400;
+        letter-spacing: .02em;
+
+        &:nth-of-type(2) {
+            font-size: 1.125rem;
+        }
+    }
+
+    tbody tr:nth-of-type(odd) {
+        background-color: var(--col-bckgrnd-light);
+    }
+
+    tbody tr:nth-of-type(even) {
+        background-color: var(--col-bckgrnd-lighter);
+    }
+    
+    tbody tr {
+        position: relative;
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--col-bckgrnd-lightest);
+        }
+
+        &.selected {
+            background-color: var(--col-grey);
+        }
+    }
+}
+
+.total {
+    text-align: right;
+    margin-bottom: 1.2rem;
+    color: var(--col-black);
+    font-size: .75rem;
+    letter-spacing: .06em;
+
+    h5 {
+        display: inline;
+        margin-right: .6em;
+        text-transform: uppercase;
+    }
+
+    span {
+        font-weight: 600;
+    }
+}
+
+.ctrl {
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5vh;
+
+    select {
+        outline: 1px solid var(--col-light);
+        border-right: .4rem solid transparent;
+        padding: .38rem .3rem .3rem .4rem;
+        background-color: transparent;
+        color: var(--col-light);
+        font-family: 'Outfit', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 0.938rem;
+        letter-spacing: .12em;
+        cursor: pointer;
+    }
+
+    select>option {
+        color: var(--col-dark);
+        background-color: var(--col-light);
+        background-image: none;
+    }
+
+    button {
+        padding: .4rem 1.2rem;
+        cursor: pointer;
+    }
+
+    &-page {
+        display: flex;
+        position: relative;
+        gap: 1.4rem;
+        padding: 0 .2rem;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            border-radius: 1px;
+            height: 100%;
+            background-color: var(--col-light);
+        }
+
+        &::before {
+            left: 0;
+        }
+
+        &::after {
+            right: 0;
+        }
+
+        & img {
+            display: block;
+            width: 1.6rem;
+            height: auto;
+            cursor: pointer;
+
+            &:nth-of-type(1),
+            &:nth-of-type(2) {
+                transform: rotate(180deg);
+            }
+        }
+
+        & span {
+            display: flex;
+            align-items: center;
+
+            & p {
+                width: 3ch;
+                color: var(--col-light);
+                font-size: 1.063rem;
+                text-align: center;
+
+                &:nth-of-type(2) {
+                    width: 1ch;
+                }
+            }
+        }
+    }
+}
