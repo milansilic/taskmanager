@@ -6,10 +6,7 @@ import TaskForm from "../components/TaskForm"
 import DeleteModal from "../components/DeleteModal"
 import '../styles/pages/mainGrid.scss'
 
-
-const MainGrid = observer(({passToApp}:{passToApp:any}) => {
-
-   
+const MainGrid = observer(({passToApp}:{passToApp:any}) => {   
    const [selectedActivity, setSelectedActivity]: any = useState('')
    const [selectedId, setSelectedId]: any = useState()
 

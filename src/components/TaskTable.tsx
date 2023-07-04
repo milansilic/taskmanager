@@ -4,48 +4,32 @@ import '../styles/components/taskTable.scss'
 import arr from "../assets/icons/arr.svg"
 import arr2 from "../assets/icons/arr-tab.svg"
 
-const COLUMNS = [
-    {
-        Header: 'id',
-        accessor: 'id',
-    },
-    {
-        Header: 'activity',
-        accessor: 'activity',
-    },
-    {
-        Header: 'frequency',
-        accessor: 'frequency',
-    },
-    {
-        Header: 'resources',
-        accessor: 'resources',
-    },
-    {
-        Header: 'price',
-        accessor: 'price',
-    },
-    {
-        Header: 'importance level',
-        accessor: 'importanceLevel',
-    },
-    {
-        Header: 'urgency level',
-        accessor: 'urgencyLevel',
-    }
-]
+interface TaskTableModel {
+    TASKS: any;
+    unselect: any;
+    passSelectedRow: any;
+    passToApp: any;
+}
 
-const TaskTable = ({ TASKS, unselect, passSelectedRow, passToApp }: { TASKS: any, unselect:any, passSelectedRow:any, passToApp:any }) => {
+const TaskTable: React.FC<TaskTableModel> = ({ TASKS, unselect, passSelectedRow, passToApp }: TaskTableModel) => {
     const initialNumOfRows: number = 8;
     const initialState: any = { pageSize: initialNumOfRows, pageIndex: 0 };
-    const columns: any = useMemo(() => COLUMNS, [])
-    
+    const columns: any = useMemo(() => [
+        { Header: 'id', accessor: 'id' },
+        { Header: 'activity', accessor: 'activity' },
+        { Header: 'frequency', accessor: 'frequency' },
+        { Header: 'resources', accessor: 'resources' },
+        { Header: 'price', accessor: 'price' },
+        { Header: 'importance level', accessor: 'importanceLevel' },
+        { Header: 'urgency level', accessor: 'urgencyLevel' }
+    ], []);
+
     const {
         getTableProps,
         getTableBodyProps,
         headerGroups,
-        prepareRow,
         state,
+        prepareRow,
         page,
         setPageSize,
         nextPage,
@@ -54,22 +38,8 @@ const TaskTable = ({ TASKS, unselect, passSelectedRow, passToApp }: { TASKS: any
         gotoPage,
         pageCount,
         setGlobalFilter
-    }: {
-        getTableProps: any,
-        getTableBodyProps: any,
-        headerGroups: any,
-        prepareRow: any,
-        state: any,
-        page: any,
-        setPageSize: any,
-        nextPage: any,
-        previousPage: any,
-        pageOptions: any,
-        gotoPage: any,
-        pageCount: any,
-        setGlobalFilter: any
     } = useTable(
-        { columns: columns, data: TASKS, initialState },
+        {columns: columns, data: TASKS, initialState},
         useGlobalFilter,
         useSortBy,
         usePagination
@@ -77,9 +47,9 @@ const TaskTable = ({ TASKS, unselect, passSelectedRow, passToApp }: { TASKS: any
 
     let { globalFilter, pageIndex, pageSize } = state
 
-    const rowSelect = (i: number, allValues:any) => {
+    const rowSelect = (i: number, allValues: any) => {
         let tableRows = [...document.getElementsByClassName('rw')]
-        
+
         if (tableRows[i].classList.contains('selected')) {
             tableRows[i].classList.remove('selected')
             document.body.classList.remove('unlock-edit-delete')
@@ -88,10 +58,10 @@ const TaskTable = ({ TASKS, unselect, passSelectedRow, passToApp }: { TASKS: any
             tableRows[i].classList.add('selected')
             document.body.classList.add('unlock-edit-delete')
         }
-        
+
         passSelectedRow(allValues);
-        passToApp(allValues);       
-    }    
+        passToApp(allValues);
+    }
 
     return <section className='task-table'>
         <form className='filter-box'>
@@ -117,7 +87,7 @@ const TaskTable = ({ TASKS, unselect, passSelectedRow, passToApp }: { TASKS: any
             <tbody {...getTableBodyProps()}>
                 {page.map((row: any, i: number) => {
                     prepareRow(row)
-                    return <tr className='rw' onClick={()=> rowSelect(i, row.values)} key={i} {...row.getRowProps()}>
+                    return <tr className='rw' onClick={() => rowSelect(i, row.values)} key={i} {...row.getRowProps()}>
                         {row.cells.map((cell: any, i: number) => {
                             return <td key={i} {...cell.getCellProps()}>{cell.render('Cell')}</td>
                         })}

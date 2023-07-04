@@ -1,6 +1,6 @@
 import { action, makeObservable, observable } from 'mobx';
 
-interface ITodoModel {
+interface TaskStoreModel {
     id: number;
     activity: string;
     frequency: string;
@@ -11,8 +11,8 @@ interface ITodoModel {
 }
 
 export class TaskStore {
-    tasks: ITodoModel[] = [];
-    todo: ITodoModel = this.resetTodoData();
+    tasks: TaskStoreModel[] = [];
+    todo: TaskStoreModel = this.resetTodoData();
     // URL: string = "http://localhost:8000/task";
     // empdate: any = {};
 
