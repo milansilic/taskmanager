@@ -23,7 +23,7 @@ const MainGrid = observer(({passToApp}:{passToApp:any}) => {
    return <>
       <DeleteModal selectedActivity={selectedActivity} selectedId={selectedId} unselect={unselect}/>
       <section className="main-grid flex-space-between">
-         <h1><span>Personal</span> TASK Manager</h1>
+         <h1><span>Personallll</span> TASK Manager</h1>
          <main>
             <TaskTable TASKS={taskStore.tasks} unselect={unselect} passSelectedRow={passSelectedRow} passToApp={passToApp}/>
          </main>
