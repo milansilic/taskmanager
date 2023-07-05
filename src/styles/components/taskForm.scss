@@ -188,24 +188,24 @@ aside {
     transition: padding .22s, color .22s, width .22s, letter-spacing .22s, border .1s, opacity .2s 0s, transform .2s 0s;
 }
 
-.unlock-edit-delete .main-grid aside footer .btn-edit,
-.unlock-edit-delete .main-grid aside footer .btn-delete {
+.unlock-edit-delete main aside footer .btn-edit,
+.unlock-edit-delete main aside footer .btn-delete {
     opacity: 1;
     transform: translateX(0px);
     color: var(--col-light);
 }
 
-.unlock-edit-delete .main-grid aside footer .btn-edit {
+.unlock-edit-delete main aside footer .btn-edit {
     transition: padding .22s, color .22s, width .22s, letter-spacing .22s, border .1s, opacity .2s 0s, transform .2s 0s;
 }
 
-.unlock-edit-delete .main-grid aside footer .btn-delete {
+.unlock-edit-delete main aside footer .btn-delete {
     transition: padding .22s, color .22s, width .22s, letter-spacing .22s, border .1s, opacity .2s .2s, transform .2s .2s;
 }
 
 .btn-add, 
-.unlock-edit-delete .main-grid aside footer .btn-edit,
-.unlock-edit-delete .main-grid aside footer .btn-delete {
+.unlock-edit-delete main aside footer .btn-edit,
+.unlock-edit-delete main aside footer .btn-delete {
     &:hover {
         border: 2px solid var(--col-light);
     }

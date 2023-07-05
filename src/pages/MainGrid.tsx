@@ -6,29 +6,21 @@ import TaskForm from "../components/TaskForm"
 import DeleteModal from "../components/DeleteModal"
 import '../styles/pages/mainGrid.scss'
 
-const MainGrid = observer(({passToApp}:{passToApp:any}) => {   
+const MainGrid = observer(({passToEdit, unselect}:{passToEdit:any, unselect:any}) => {   
    const [selectedActivity, setSelectedActivity]: any = useState('')
    const [selectedId, setSelectedId]: any = useState()
-
-   const passSelectedRow = (allValues:any)=> {
-      setSelectedId(allValues.id);
-      setSelectedActivity(allValues.activity);
-   }
-
-   const unselect = ()=> {
-      for (const r of [...document.getElementsByClassName('rw')]) r.classList.remove('selected');
-      document.body.classList.remove('unlock-edit-delete', 'delete-check');
+   const passToDelete = (data:any)=> {
+      setSelectedId(data.id);
+      setSelectedActivity(data.activity);
    }
 
    return <>
       <DeleteModal selectedActivity={selectedActivity} selectedId={selectedId} unselect={unselect}/>
-      <section className="main-grid flex-space-between">
-         <h1><span>Personallll</span> TASK Manager</h1>
-         <main>
-            <TaskTable TASKS={taskStore.tasks} unselect={unselect} passSelectedRow={passSelectedRow} passToApp={passToApp}/>
-         </main>
+      <main className="flex-space-between">
+         <h1><span>Personal</span> TASK Manager</h1>
+         <TaskTable TASKS={taskStore.tasks} unselect={unselect} passToDelete={passToDelete} passToEdit={passToEdit}/>
          <TaskForm unselect={unselect}/>
-      </section>
+      </main>
    </>
 })
 export default MainGrid;

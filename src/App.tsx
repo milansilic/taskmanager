@@ -5,19 +5,18 @@ import MainGrid from "./pages/MainGrid";
 import EditTask from "./pages/EditTask";
 
 const App = observer(() => {
-
    const [allValues, setAllValues]: any = useState()
+   const passToEdit = (data: any) => setAllValues(data)
 
-   const passToApp = (data: any) => {
-      setAllValues(data)
+   const unselect = ()=> {
+      for (const r of [...document.getElementsByClassName('rw')]) r.classList.remove('selected');
+      document.body.classList.remove('unlock-edit-delete', 'delete-check');
    }
 
-   return <BrowserRouter
-      basename={import.meta.env.DEV ? '/' : '/taskmanager/'}
-   >
+   return <BrowserRouter basename={import.meta.env.DEV ? '/' : '/taskmanager/'}>
       <Routes>
-         <Route path='/' element={<MainGrid passToApp={passToApp} />} />
-         <Route path='edit' element={<EditTask allValues={allValues} />} />
+         <Route path='/' element={<MainGrid passToEdit={passToEdit} unselect={unselect}/>} />
+         <Route path='edit' element={<EditTask allValues={allValues} unselect={unselect}/>} />
       </Routes>
    </BrowserRouter>
 })

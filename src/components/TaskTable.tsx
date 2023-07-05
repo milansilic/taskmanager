@@ -7,11 +7,11 @@ import arr2 from "../assets/icons/arr-tab.svg"
 interface TaskTableModel {
     TASKS: any;
     unselect: any;
-    passSelectedRow: any;
-    passToApp: any;
+    passToDelete: any;
+    passToEdit: any;
 }
 
-const TaskTable: React.FC<TaskTableModel> = ({ TASKS, unselect, passSelectedRow, passToApp }: TaskTableModel) => {
+const TaskTable: React.FC<TaskTableModel> = ({ TASKS, unselect, passToDelete, passToEdit }: TaskTableModel) => {
     const initialNumOfRows: number = 8;
     const initialState: any = { pageSize: initialNumOfRows, pageIndex: 0 };
     const columns: any = useMemo(() => [
@@ -59,8 +59,8 @@ const TaskTable: React.FC<TaskTableModel> = ({ TASKS, unselect, passSelectedRow,
             document.body.classList.add('unlock-edit-delete')
         }
 
-        passSelectedRow(allValues);
-        passToApp(allValues);
+        passToDelete(allValues);
+        passToEdit(allValues);
     }
 
     return <section className='task-table'>

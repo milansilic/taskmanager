@@ -1,4 +1,5 @@
-.main-grid {
+main {
+    flex-grow: 1;
     align-items: flex-start;
     width: 92%;
     max-width: 1920px;
@@ -14,13 +15,8 @@
 h1 {
     width: 100%;
     margin-bottom: 2.5rem;
-    font-size: 2.2rem;
 
     span {
         font-weight: 300;
     }
-}
-
-main {
-    flex-grow: 1;
 }
