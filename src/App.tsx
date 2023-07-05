@@ -12,10 +12,12 @@ const App = observer(() => {
       setAllValues(data)
    }
 
-   return <BrowserRouter>
+   return <BrowserRouter
+      basename={import.meta.env.DEV ? '/' : '/taskmanager/'}
+   >
       <Routes>
          <Route path='/' element={<MainGrid passToApp={passToApp} />} />
-         <Route path='edit' element={<EditTask allValues={allValues}/>} />
+         <Route path='edit' element={<EditTask allValues={allValues} />} />
       </Routes>
    </BrowserRouter>
 })
