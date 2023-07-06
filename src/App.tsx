@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { observer } from "mobx-react-lite";
 import MainGrid from "./pages/MainGrid";
 import EditTask from "./pages/EditTask";
 
-const App = observer(() => {
+const App = () => {
    const [allValues, setAllValues]: any = useState()
+
    const passToEdit = (data: any) => setAllValues(data)
 
    const unselect = ()=> {
@@ -19,5 +19,5 @@ const App = observer(() => {
          <Route path='edit' element={<EditTask allValues={allValues} unselect={unselect}/>} />
       </Routes>
    </BrowserRouter>
-})
+}
 export default App

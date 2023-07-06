@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 import taskStore from "../stores/TaskStore";
 import '../styles/components/taskForm.scss';
 
-const TaskForm = observer(({unselect}:{unselect:any}) => {
+const TaskForm = observer(({ unselect }: { unselect: any }) => {
     const [activity, setActivity]: any = useState('');
     const [frequency, setFrequency]: any = useState('');
     const [resources, setResources]: any = useState('');
@@ -13,9 +13,9 @@ const TaskForm = observer(({unselect}:{unselect:any}) => {
     const [urgencyLevel, setUrgencyLevel]: any = useState('');
     const allSets = [setActivity, setFrequency, setResources, setPrice, setImportanceLevel, setUrgencyLevel];
 
-    // add-task button logic
     const addTask = () => {
-        taskStore.postTasks(activity, frequency, resources, price, importanceLevel, urgencyLevel);
+        const lastPageBtn = document.getElementById('last-page');
+        taskStore.postTasks(activity, frequency, resources, price, importanceLevel, urgencyLevel, lastPageBtn);
         allSets.map(set => set(''));
     }
 
@@ -64,13 +64,13 @@ const TaskForm = observer(({unselect}:{unselect:any}) => {
         <footer>
             <div className="center-fl">
                 <button className="btn-add pointer" onClick={() => {
-                    for (const r of [...document.getElementsByClassName('rw')]) r.classList.remove('selected');
-                    document.body.classList.remove('unlock-edit-delete');
-                    addTask();
+                    if (!activity) alert('field "activity" is required')
+                    else if (!importanceLevel) alert('field "Importance Level" is required') 
+                    else unselect(), addTask()
                 }}>add task<i></i></button>
             </div>
             <div className="center-fl">
-                <Link to='edit'><button className="btn-edit pointer" onClick={() => { }}>edit<i></i></button></Link>
+                <Link to='edit'><button className="btn-edit pointer">edit<i></i></button></Link>
             </div>
             <div className="center-fl">
                 <button className="btn-delete pointer" onClick={() => {

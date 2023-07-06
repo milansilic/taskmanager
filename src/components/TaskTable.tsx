@@ -6,14 +6,12 @@ import arr2 from "../assets/icons/arr-tab.svg"
 
 interface TaskTableModel {
     TASKS: any;
-    unselect: any;
     passToDelete: any;
     passToEdit: any;
+    unselect: any;
 }
 
-const TaskTable: React.FC<TaskTableModel> = ({ TASKS, unselect, passToDelete, passToEdit }: TaskTableModel) => {
-    const initialNumOfRows: number = 8;
-    const initialState: any = { pageSize: initialNumOfRows, pageIndex: 0 };
+const TaskTable: React.FC<TaskTableModel> = ({ TASKS, passToDelete, passToEdit, unselect}: TaskTableModel) => {
     const columns: any = useMemo(() => [
         { Header: 'id', accessor: 'id' },
         { Header: 'activity', accessor: 'activity' },
@@ -23,6 +21,9 @@ const TaskTable: React.FC<TaskTableModel> = ({ TASKS, unselect, passToDelete, pa
         { Header: 'importance level', accessor: 'importanceLevel' },
         { Header: 'urgency level', accessor: 'urgencyLevel' }
     ], []);
+
+    const initialNumOfRows: number = 8;
+    let initialState:any = { pageSize: initialNumOfRows, pageIndex: 0 };
 
     const {
         getTableProps,
@@ -104,7 +105,7 @@ const TaskTable: React.FC<TaskTableModel> = ({ TASKS, unselect, passToDelete, pa
                 setPageSize(Number(+e.target.value));
                 unselect();
             }}>
-                {[initialNumOfRows, 16, 24].map((pageSize: number) => (
+                {[initialNumOfRows, initialNumOfRows*2, initialNumOfRows*3].map((pageSize: number) => (
                     <option key={pageSize} value={pageSize}>{pageSize}</option>
                 ))}
             </select>
@@ -126,7 +127,7 @@ const TaskTable: React.FC<TaskTableModel> = ({ TASKS, unselect, passToDelete, pa
                     nextPage();
                     unselect();
                 }} alt="next page" />
-                <img src={arr} onClick={() => {
+                <img id='last-page' src={arr} onClick={() => {
                     gotoPage(pageCount - 1);
                     unselect();
                 }} alt="last page" />

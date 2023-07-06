@@ -12,16 +12,12 @@ interface TaskStoreModel {
 
 export class TaskStore {
     tasks: TaskStoreModel[] = [];
-    todo: TaskStoreModel = this.resetTodoData();
-    // URL: string = "http://localhost:8000/task";
-    // empdate: any = {};
+    URL: string = "https://64a42511c3b509573b572816.mockapi.io/task";
 
     constructor() {
         makeObservable(this, {
-            todo: observable,
             tasks: observable,
-            // empdate: observable,
-            resetTodoData: action,
+
             getTasks: action,
             postTasks: action,
             deleteTask: action
@@ -29,43 +25,16 @@ export class TaskStore {
         this.getTasks();
     }
 
-    resetTodoData() {
-        return {
-            id: Math.max(0, Math.max(...this.tasks.map(({ id }) => id))) + 1,
-            activity: "",
-            frequency: "",
-            resources: "",
-            price: "",
-            importanceLevel: "",
-            urgencyLevel: "",
-        }
-    }
-
-    // // OPT1
     async getTasks() {
         try {
-            const response = await fetch("https://64a42511c3b509573b572816.mockapi.io/task");
+            const response = await fetch(this.URL);
             const data = await response.json();
             this.tasks = await data;
-        } catch (error) {console.log(error);}
+        } catch (error) { console.log(error); }
     }
 
-    // // OPT2
-    // getTasks() {
-    //     fetch("http://localhost:8000/task")
-    //         .then(res => res.json())
-    //         .then(data => { this.tasks = data })
-    // }
-
-    // // OPT3
-    // async getTasks(){
-    //     const result = await fetch("http://localhost:8000/task")
-    //     result.json().then(json =>{this.tasks = json});       
-    // }
-
-    postTasks(activity: any, frequency: any, resources: any, price: any, importanceLevel: any, urgencyLevel: any,) {
-        // fetch("http://localhost:8000/task", {
-        fetch("https://64a42511c3b509573b572816.mockapi.io/task", {
+    postTasks(activity: any, frequency: any, resources: any, price: any, importanceLevel: any, urgencyLevel: any, lastPageBtn: any) {
+        fetch(this.URL, {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({
@@ -78,11 +47,12 @@ export class TaskStore {
                 urgencyLevel: urgencyLevel,
             })
         })
-        .then(() => this.getTasks())
+            .then(() => this.getTasks())
+            .then(() => {setTimeout(() => {lastPageBtn.click()}, 1);})
     }
 
-    editTasks(id:any, activity: any, frequency: any, resources: any, price: any, importanceLevel: any, urgencyLevel: any,) {
-        fetch(`https://64a42511c3b509573b572816.mockapi.io/task/${id}`, {
+    editTasks(id: any, activity: any, frequency: any, resources: any, price: any, importanceLevel: any, urgencyLevel: any,) {
+        fetch(`${this.URL}/${id}`, {
             method: "PUT",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({
@@ -95,11 +65,11 @@ export class TaskStore {
                 urgencyLevel: urgencyLevel,
             })
         })
-        .then(() => this.getTasks())
+            .then(() => this.getTasks())
     }
 
     deleteTask(id: any) {
-        fetch(`https://64a42511c3b509573b572816.mockapi.io/task/${id}`, {
+        fetch(`${this.URL}/${id}`, {
             method: "DELETE",
             headers: { "content-type": "application/json" },
         }).then(() => this.getTasks())
@@ -108,3 +78,5 @@ export class TaskStore {
 
 const taskStore = new TaskStore();
 export default taskStore;
+
+
