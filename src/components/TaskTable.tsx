@@ -5,10 +5,10 @@ import arr from "../assets/icons/arr.svg"
 import arr2 from "../assets/icons/arr-tab.svg"
 
 interface TaskTableModel {
-    TASKS: any;
-    passToDelete: any;
-    passToEdit: any;
-    unselect: any;
+    TASKS: any,
+    passToDelete: any,
+    passToEdit: any,
+    unselect: any,
 }
 
 const TaskTable: React.FC<TaskTableModel> = ({ TASKS, passToDelete, passToEdit, unselect}: TaskTableModel) => {
@@ -22,8 +22,8 @@ const TaskTable: React.FC<TaskTableModel> = ({ TASKS, passToDelete, passToEdit, 
         { Header: 'urgency level', accessor: 'urgencyLevel' }
     ], []);
 
-    const initialNumOfRows: number = 8;
-    let initialState:any = { pageSize: initialNumOfRows, pageIndex: 0 };
+    let initialPageSize: number = 8;
+    let initialState:any = { pageSize: initialPageSize, pageIndex: 0 };
 
     const {
         getTableProps,
@@ -105,7 +105,7 @@ const TaskTable: React.FC<TaskTableModel> = ({ TASKS, passToDelete, passToEdit, 
                 setPageSize(Number(+e.target.value));
                 unselect();
             }}>
-                {[initialNumOfRows, initialNumOfRows*2, initialNumOfRows*3].map((pageSize: number) => (
+                {[initialPageSize, initialPageSize*2, initialPageSize*3].map((pageSize: number) => (
                     <option key={pageSize} value={pageSize}>{pageSize}</option>
                 ))}
             </select>

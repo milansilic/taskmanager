@@ -1,218 +1,277 @@
 aside {
-    position: relative;
-    width: 17.5vw;
-    padding: 2.7rem 1rem;
-    margin-left: 2.8vw;
+   position: relative;
+   width: 17.5vw;
+   padding: 2.7rem 1rem;
+   margin-left: 2.8vw;
 
-    @media (min-width:1440px) {
-        width: 16rem;
-        margin-left: 5vw;
-    }
+   @media (min-width:1440px) {
+      width: 16rem;
+      margin-left: 5vw;
+   }
 
-    form {
-        margin-bottom: 4vh;
-    }
+   form {
+      margin-bottom: 1.2rem;
+   }
 
-    fieldset {
-        position: relative;
-        width: 100%;
-        margin-bottom: 2.2rem;
+   footer div {
+      width: 100%;
+      height: 94px;
 
-        input::first-letter {
-            text-transform: capitalize;
-        }
+      button {
+         outline: none;
+         width: 12ch;
+         transform: translateY(0%);
+         padding: 1rem 0;
+         margin: 0 auto;
+         font-family: 'Outfit', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+         font-size: 1.063rem;
+         letter-spacing: .03rem;
+         text-transform: capitalize;
+         transition-timing-function: ease-out;
+      }
 
-        input {
-            display: inline-block;
-            width: 100%;
-            padding: .4em 0 .28em;
-            color: var(--col-black);
-            font-size: .938rem;
-            font-weight: 600;
-            letter-spacing: .09em;
-            border: 0;
-            background: none;
-            border-bottom: 1px solid var(--col-grey);
+      button:hover {
+         padding: 1.2rem 0;
+         width: 14ch;
+         color: var(--col-light);
+         letter-spacing: .14rem;
+      }
 
-            &::first-letter {
-                text-transform: capitalize;
-            }
+      button::before {
+         content: "";
+         position: absolute;
+         inset: 2px;
+      }
 
-            &:focus~label,
-            &:valid~label {
-                color: var(--col-light);
-                transform: translateY(-0.85rem);
-                font-size: 0.82em;
-                cursor: default;
-            }
+      button span {
+         width: 100%;
+      }
 
-            &:focus~span {
-                width: 100%;
-            }
-        }
+      button i {
+         position: absolute;
+         inset: 0;
+      }
 
-        label {
-            position: absolute;
-            bottom: .4rem;
-            left: 0;
-            height: 30px;
-            line-height: 30px;
-            color: var(--col-grey);
-            font-size: 1.063rem;
-            letter-spacing: .03rem;
-            transition: all 200ms ease-out;
-            z-index: 10;
-            cursor: text;
-        }
+      button i::before,
+      button i::after {
+         content: "";
+         position: absolute;
+         width: 6px;
+         height: 6px;
+         border: 1px solid var(--col-bckgrnd-lightest);
+         transition: .25s;
+      }
 
-        span {
-            content: '';
-            display: block;
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--col-light);
-            transition: all 200ms ease-out;
-        }
-    }
+      button i::before {
+         left: 100.5%;
+         top: -1px;
+         transform: translate(-50%, -50%);
+      }
 
-    footer div {
-        width: 100%;
-        height: 94px;
+      button i::after {
+         left: -0.5%;
+         bottom: -1px;
+         transform: translate(-50%, 50%);
+      }
 
-        button {
-            outline: none;      
-            width: 12ch;
-            transform: translateY(0%);
-            padding: 1rem 0;
-            margin: 0 auto;
-            font-family: 'Outfit', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            font-size: 1.063rem;
-            letter-spacing: .03rem;
-            text-transform: capitalize;
-            transition-timing-function: ease-out;
-        }
+      button:hover i::before,
+      button:hover i::after {
+         width: .8rem;
+         height: 0px;
+         border: 2px solid var(--col-light);
+         background-color: var(--col-light);
+      }
 
-        button:hover {
-            padding: 1.2rem 0;
-            width: 14ch;
-            color: var(--col-light);
-            letter-spacing: .14rem;
-        }
+      button:hover i::before {
+         left: 20%;
+      }
 
-        button::before {
-            content: "";
-            position: absolute;
-            inset: 2px;
-        }
+      button:hover i::after {
+         left: 80%;
+      }
+   }
+}
 
-        button span {
-            width: 100%;
-        }
+fieldset.txt,
+fieldset.stars {
+   position: relative;
+   width: 100%;
+}
 
-        button i {
-            position: absolute;
-            inset: 0;
-        }
+fieldset.txt {
+   margin-bottom: 2.2rem;
 
-        button i::before,
-        button i::after {
-            content: "";
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            border: 1px solid var(--col-bckgrnd-lightest);
-            transition: .25s;
-        }
+   input::first-letter {
+      text-transform: capitalize;
+   }
 
-        button i::before {
-            left: 100.5%;
-            top: -1px;
-            transform: translate(-50%, -50%);
-        }
+   input {
+      display: inline-block;
+      width: 100%;
+      padding: .4em 0 .28em;
+      color: var(--col-black);
+      font-size: .938rem;
+      font-weight: 600;
+      letter-spacing: .09em;
+      border: 0;
+      background: none;
+      border-bottom: 1px solid var(--col-grey);
 
-        button i::after {
-            left: -0.5%;
-            bottom: -1px;
-            transform: translate(-50%, 50%);
-        }
+      &::first-letter {
+         text-transform: capitalize;
+      }
 
-        button:hover i::before,
-        button:hover i::after {
-            width: .8rem;
-            height: 0px;
-            border: 2px solid var(--col-light);
-            background-color: var(--col-light);
-        }
+      &:focus~label,
+      &:valid~label {
+         color: var(--col-light);
+         transform: translateY(-0.8rem);
+         font-size: .875em;
+         cursor: default;
+      }
 
-        button:hover i::before {
-            left: 20%;
-        }
+      &:focus~span {
+         width: 100%;
+      }
+   }
 
-        button:hover i::after {
-            left: 80%;
-        }
-    }
+   label {
+      position: absolute;
+      bottom: .4rem;
+      left: 0;
+      height: 30px;
+      line-height: 30px;
+      color: var(--col-grey);
+      font-size: 1.063rem;
+      letter-spacing: .03rem;
+      transition: .2s ease-out;
+      z-index: 10;
+      cursor: text;
+   }
+
+   span {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--col-light);
+      transition: all 200ms ease-out;
+   }
+}
+
+fieldset.stars {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   flex-direction: row-reverse;
+   padding-top: 28px;
+   margin-top: 24px;
+
+   input {
+      display: none;
+   }
+
+   label {      
+      -webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      width: 30px;
+      height: 30px;
+      background-color: var(--col-bckgrnd-darkest);
+      margin-right: -2px;
+      transition: .12s ease-out;
+      cursor: pointer;
+   }
+
+   input:not(:checked)~label:hover,
+   input:not(:checked)~label:hover~label {
+      background-color: #e5c717;
+   }
+
+   input:checked~label {
+      background-color: gold;
+   }
+
+   input#rate-5:checked~label {
+      background-color: #fe7;
+      text-shadow: 0 0 20px #952;
+   }
+
+   h6 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      color: var(--col-grey);
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: .03rem;
+      transition: .2s ease-out;
+   }
+
+   input:checked~h6 {
+      color: var(--col-light);
+   }
 }
 
 .btn-add {
-    background-color: unset;
-    border: 1px solid var(--col-grey);
-    color: var(--col-grey);
-    transition: padding .22s, color .22s, width .22s, letter-spacing .22s, border .1s,;
+   background-color: unset;
+   border: 1px solid var(--col-grey);
+   color: var(--col-grey);
+   transition: padding .22s, color .22s, width .22s, letter-spacing .22s, border .1s, ;
 
-    &:focus {
-        border: 1px solid var(--col-light);
-    }
+   &:focus {
+      border: 1px solid var(--col-light);
+   }
 }
 
 .btn-edit,
 .btn-delete {
-    opacity: 0;
-    border: 1px solid var(--col-light);
-    color: var(--col-light);
-    transform: translateX(200px);
+   opacity: 0;
+   border: 1px solid var(--col-light);
+   color: var(--col-light);
+   transform: translateX(200px);
 }
 
 .btn-edit {
-    background-color: var(--col-analogous1);
-    transition: padding .22s, color .22s, width .22s, letter-spacing .22s, border .1s, opacity .2s .2s, transform .2s .2s;
+   background-color: var(--col-analogous1);
+   transition: padding .22s, color .22s, width .22s, letter-spacing .22s, border .1s, opacity .2s .2s, transform .2s .2s;
 }
 
 .btn-delete {
-    background-color: var(--col-analogous2);
-    transition: padding .22s, color .22s, width .22s, letter-spacing .22s, border .1s, opacity .2s 0s, transform .2s 0s;
+   background-color: var(--col-analogous2);
+   transition: padding .22s, color .22s, width .22s, letter-spacing .22s, border .1s, opacity .2s 0s, transform .2s 0s;
 }
 
 .btn-cancel {
-    border: 1px solid var(--col-light);
-    color: var(--col-light);
-    background-color: var(--col-red);
-    transition: .22s ease-out;
+   border: 1px solid var(--col-light);
+   color: var(--col-light);
+   background-color: var(--col-red);
+   transition: .22s ease-out;
 }
 
 .unlock-edit-delete main aside footer .btn-edit,
 .unlock-edit-delete main aside footer .btn-delete {
-    opacity: 1;
-    transform: translateX(0px);
-    color: var(--col-light);
+   opacity: 1;
+   transform: translateX(0px);
+   color: var(--col-light);
 }
 
 .unlock-edit-delete main aside footer .btn-edit {
-    transition: padding .22s, color .22s, width .22s, letter-spacing .22s, border .1s, opacity .2s 0s, transform .2s 0s;
+   transition: padding .22s, color .22s, width .22s, letter-spacing .22s, border .1s, opacity .2s 0s, transform .2s 0s;
 }
 
 .unlock-edit-delete main aside footer .btn-delete {
-    transition: padding .22s, color .22s, width .22s, letter-spacing .22s, border .1s, opacity .2s .2s, transform .2s .2s;
+   transition: padding .22s, color .22s, width .22s, letter-spacing .22s, border .1s, opacity .2s .2s, transform .2s .2s;
 }
 
-.btn-add, 
+.btn-add,
 .btn-cancel,
 .unlock-edit-delete main aside footer .btn-edit,
 .unlock-edit-delete main aside footer .btn-delete {
-    &:hover {
-        border: 2px solid var(--col-light);
-    }
+   &:hover {
+      border: 2px solid var(--col-light);
+   }
 }

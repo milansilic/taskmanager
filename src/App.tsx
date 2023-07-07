@@ -4,8 +4,8 @@ import MainGrid from "./pages/MainGrid";
 import EditTask from "./pages/EditTask";
 
 const App = () => {
-   const [allValues, setAllValues]: any = useState()
-
+   const [allValues, setAllValues]: any = useState();
+  
    const passToEdit = (data: any) => setAllValues(data)
 
    const unselect = ()=> {
