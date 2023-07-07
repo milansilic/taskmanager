@@ -19,6 +19,7 @@ const TaskForm = observer(({ unselect }: { unselect: any }) => {
         allSets.map(set => set(''));
         let ele = [...document.querySelectorAll("[name=il], [name=ul]")];    
         ele.forEach((elm: any) => elm.checked = false);
+        console.log(e);
     }
 
     onkeydown = e => {
