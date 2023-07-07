@@ -23,8 +23,6 @@ const TaskForm = observer(({ unselect }: { unselect: any }) => {
         switch (e.key) {
             case "Escape": unselect()
                 break;
-            default:
-                break;
         }
     }
 

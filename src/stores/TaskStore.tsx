@@ -17,7 +17,6 @@ export class TaskStore {
     constructor() {
         makeObservable(this, {
             tasks: observable,
-
             getTasks: action,
             postTasks: action,
             deleteTask: action
@@ -51,7 +50,7 @@ export class TaskStore {
             .then(() => {setTimeout(() => {lastPageBtn.click()}, 1);})
     }
 
-    editTasks(id: any, activity: any, frequency: any, resources: any, price: any, importanceLevel: any, urgencyLevel: any,) {
+    editTasks(id: any, activity: any, frequency: any, resources: any, price: any, importanceLevel: any, urgencyLevel: any, toMainBtn: any) {
         fetch(`${this.URL}/${id}`, {
             method: "PUT",
             headers: { "content-type": "application/json" },
@@ -66,6 +65,7 @@ export class TaskStore {
             })
         })
             .then(() => this.getTasks())
+            .then(() => {setTimeout(() => {toMainBtn.click()}, 1);})
     }
 
     deleteTask(id: any) {

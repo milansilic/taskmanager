@@ -1,0 +1,43 @@
+.edit-form {
+
+    h1 {
+        margin-bottom: 3rem;
+    }
+
+    form { 
+        flex-grow: 1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: space-between;
+        gap: 4rem 4%;
+        padding: 2% 0 0 8%;
+
+        label,
+        input {
+            display: block;
+        }
+
+        label {
+            margin-bottom: 1rem;
+            color: var(--col-grey);
+            font-size: 1.25rem;
+            letter-spacing: 0.12em;
+        }
+
+        input {
+            width: 30ch;
+            background-color: var(--col-bckgrnd-light);
+            padding: 1rem;
+            font-family: "Averta", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.02em;
+        }
+    }
+
+    aside {
+        align-self: center;
+        width: 22%;
+        margin-left: 0;
+    }
+}
+
