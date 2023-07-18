@@ -1,17 +1,18 @@
 import { useMemo } from 'react'
 import { useTable, usePagination, useSortBy, useGlobalFilter } from 'react-table'
+import { TaskStoreModel } from "../stores/TaskStore"
 import '../styles/components/taskTable.scss'
 import arr from "../assets/icons/arr.svg"
 import arr2 from "../assets/icons/arr-tab.svg"
 
 interface TaskTableModel {
-    TASKS: any,
-    passToDelete: any,
-    passToEdit: any,
-    unselect: any,
+    TASKS: TaskStoreModel[],
+    passToDelete: Function,
+    passToEdit: Function,
+    unselect: Function
 }
 
-const TaskTable: React.FC<TaskTableModel> = ({ TASKS, passToDelete, passToEdit, unselect}: TaskTableModel) => {
+const TaskTable: React.FC<TaskTableModel> = ({ TASKS, passToDelete, passToEdit, unselect}) => {
     const columns: any = useMemo(() => [
         { Header: 'id', accessor: 'id' },
         { Header: 'activity', accessor: 'activity' },
@@ -23,7 +24,7 @@ const TaskTable: React.FC<TaskTableModel> = ({ TASKS, passToDelete, passToEdit, 
     ], []);
 
     let initialPageSize: number = 8;
-    let initialState:any = { pageSize: initialPageSize, pageIndex: 0 };
+    let initialState: any = { pageSize: initialPageSize, pageIndex: 0 };
 
     const {
         getTableProps,
@@ -48,9 +49,8 @@ const TaskTable: React.FC<TaskTableModel> = ({ TASKS, passToDelete, passToEdit, 
 
     let { globalFilter, pageIndex, pageSize } = state
 
-    const rowSelect = (i: number, allValues: any) => {
+    const rowSelect = (i: number, allValues: TaskStoreModel) => {
         let tableRows = [...document.getElementsByClassName('rw')]
-
         if (tableRows[i].classList.contains('selected')) {
             tableRows[i].classList.remove('selected')
             document.body.classList.remove('unlock-edit-delete')
@@ -59,7 +59,6 @@ const TaskTable: React.FC<TaskTableModel> = ({ TASKS, passToDelete, passToEdit, 
             tableRows[i].classList.add('selected')
             document.body.classList.add('unlock-edit-delete')
         }
-
         passToDelete(allValues);
         passToEdit(allValues);
     }
@@ -74,9 +73,9 @@ const TaskTable: React.FC<TaskTableModel> = ({ TASKS, passToDelete, passToEdit, 
         </form>
         <table {...getTableProps()}>
             <thead>
-                {headerGroups.map((headerGroup: any, i: any) => (
+                {headerGroups.map((headerGroup: any, i: number) => (
                     <tr key={i} {...headerGroup.getHeaderGroupProps()}>
-                        {headerGroup.headers.map((column: any, i: any) => (
+                        {headerGroup.headers.map((column: any, i: number) => (
                             <th key={i} {...column.getHeaderProps(column.getSortByToggleProps())}>
                                 {column.render('Header')}
                                 <img src={column.isSorted ? arr2 : ''} className={column.isSortedDesc ? 'desc' : 'asc'} />

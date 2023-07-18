@@ -4,13 +4,19 @@ import taskStore from "../stores/TaskStore"
 import TaskTable from "../components/TaskTable"
 import TaskForm from "../components/TaskForm"
 import DeleteModal from "../components/DeleteModal"
+import { TaskStoreModel } from "../stores/TaskStore"
 import '../styles/pages/mainGrid.scss'
 
-const MainGrid = observer(({ passToEdit, unselect }: { passToEdit: any, unselect: any }) => {
+interface MainGridModel { 
+   passToEdit: Function, 
+   unselect: Function 
+}
+
+const MainGrid: React.FC<MainGridModel> = observer(({passToEdit, unselect}) => {
    const [selectedActivity, setSelectedActivity]: any = useState('')
    const [selectedId, setSelectedId]: any = useState()
    
-   const passToDelete = (data: any) => {
+   const passToDelete = (data: TaskStoreModel) => {
       setSelectedId(data.id);
       setSelectedActivity(data.activity);
    }

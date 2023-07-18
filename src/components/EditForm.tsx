@@ -4,19 +4,24 @@ import { observer } from "mobx-react-lite";
 import taskStore from "../stores/TaskStore";
 import '../styles/components/editForm.scss';
 
-const EditForm = observer(({ allValues, unselect }: { allValues: any, unselect: any }) => {
-   const [editedActivity, setEditedActivity]: any = useState(allValues.activity);
-   const [editedFrequency, setEditedFrequency]: any = useState(allValues.frequency);
-   const [editedResources, setEditedResources]: any = useState(allValues.resources);
-   const [editedPrice, setEditedPrice]: any = useState(allValues.price);
-   const [editedImportanceLevel, setEditedImportanceLevel]: any = useState(allValues.importanceLevel);
-   const [editedUrgencyLevel, setEditedUrgencyLevel]: any = useState(allValues.urgencyLevel);
+interface EditFormModel {
+   allValues: any,
+   unselect: Function
+}
 
+const EditForm: React.FC<EditFormModel> = observer(({allValues, unselect}) => {
+   const [editedActivity, setEditedActivity] = useState(allValues.activity);
+   const [editedFrequency, setEditedFrequency] = useState(allValues.frequency);
+   const [editedResources, setEditedResources] = useState(allValues.resources);
+   const [editedPrice, setEditedPrice] = useState(allValues.price);
+   const [editedImportanceLevel, setEditedImportanceLevel] = useState(allValues.importanceLevel);
+   const [editedUrgencyLevel, setEditedUrgencyLevel] = useState(allValues.urgencyLevel);
+   
    const editTask = () => {
       if (editedImportanceLevel > 5 || editedImportanceLevel < 1) { alert('"Importance Level" must be a number from 1 to 5!') }
       else if (editedUrgencyLevel > 5 || editedUrgencyLevel < 1) { alert('"Urgency Level" must be a number from 1 to 5!') }
       else {
-         const toMainBtn = document.getElementById('cancel-edit');
+         const toMainBtn: HTMLElement | any = document.getElementById('cancel-edit');
          taskStore.editTasks(allValues.id, editedActivity, editedFrequency, editedResources, editedPrice, editedImportanceLevel, editedUrgencyLevel, toMainBtn);
       }
    }

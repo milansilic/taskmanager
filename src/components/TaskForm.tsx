@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 import taskStore from "../stores/TaskStore";
 import '../styles/components/taskForm.scss';
 
-const TaskForm = observer(({ unselect }: { unselect: any }) => {
+const TaskForm = observer(({ unselect }: { unselect: Function }) => {
     const [activity, setActivity]: any = useState('');
     const [frequency, setFrequency]: any = useState('');
     const [resources, setResources]: any = useState('');
@@ -13,13 +13,12 @@ const TaskForm = observer(({ unselect }: { unselect: any }) => {
     const [urgencyLevel, setUrgencyLevel]: any = useState(0);
     const allSets = [setActivity, setFrequency, setResources, setPrice, setImportanceLevel, setUrgencyLevel];
 
-    const addTask = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const lastPageBtn = document.getElementById('last-page');
+    const addTask = () => {
+        const lastPageBtn: HTMLElement | null = document.getElementById('last-page');        
         taskStore.postTasks(activity, frequency, resources, price, importanceLevel, urgencyLevel, lastPageBtn);
         allSets.map(set => set(''));
         let ele = [...document.querySelectorAll("[name=il], [name=ul]")];    
         ele.forEach((elm: any) => elm.checked = false);
-        console.log(e);
     }
 
     onkeydown = e => {
@@ -80,12 +79,12 @@ const TaskForm = observer(({ unselect }: { unselect: any }) => {
         </form>
         <footer>
             <div className="center-fl">
-                <button className="btn-add pointer" onClick={(e:any) => {
+                <button className="btn-add pointer" onClick={() => {
                     if (!activity) alert('field "Activity" is required')
                     else if (!importanceLevel) alert('field "Importance level" is required')
                     else if (!urgencyLevel) alert('field "Urgency level" is required')
                     else {
-                        addTask(e);
+                        addTask();
                         unselect();
                     }
                 }}>add task<i></i></button>

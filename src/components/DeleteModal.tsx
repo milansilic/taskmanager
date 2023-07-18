@@ -1,8 +1,13 @@
 import taskStore from "../stores/TaskStore";
 import '../styles/components/deleteModal.scss'
 
-const DeleteModal = ({selectedActivity, selectedId, unselect}:{selectedActivity:any, selectedId:number, unselect:any}) => {
+interface DeleteModalModel {
+    selectedActivity: string,
+    selectedId: number,
+    unselect: Function
+}
 
+const DeleteModal: React.FC<DeleteModalModel> = ({selectedActivity, selectedId, unselect}) => {
     const clickHandler = ()=> {
         taskStore.deleteTask(selectedId);
         unselect()
