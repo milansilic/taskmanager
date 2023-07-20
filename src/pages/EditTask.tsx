@@ -1,16 +1,12 @@
-import { useNavigate } from "react-router-dom";
-import EditForm from "../components/EditForm";
+import { useNavigate } from 'react-router-dom'
+import { selectStore } from '../stores/SelectStore'
+import EditForm from '../components/EditForm'
 
-interface EditTaskModel { 
-    allValues: any, 
-    unselect: Function 
-}
-
-const EditTask: React.FC<EditTaskModel> = ({allValues, unselect}) => {
-    if (allValues === undefined) {
+const EditTask: React.FC = () => {
+    if (selectStore.selectedRow.id === 0 ) {
         const navigate = useNavigate();
         setTimeout(() => navigate('/', { replace: true }), 0);
-    }
-    return <>{allValues && (<EditForm allValues={allValues} unselect={unselect}/>)}</>
+    } 
+    return <EditForm selectedRow={selectStore.selectedRow}/>
 }
 export default EditTask;

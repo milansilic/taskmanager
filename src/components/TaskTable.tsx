@@ -1,18 +1,14 @@
 import { useMemo } from 'react'
 import { useTable, usePagination, useSortBy, useGlobalFilter } from 'react-table'
-import { TaskStoreModel } from "../stores/TaskStore"
+import { observer } from 'mobx-react-lite'
+import { selectStore } from '../stores/SelectStore'
+import { getTasksStore } from '../stores/GetTasksStore'
+import { unselectStore } from '../stores/UnselectStore'
 import '../styles/components/taskTable.scss'
-import arr from "../assets/icons/arr.svg"
-import arr2 from "../assets/icons/arr-tab.svg"
+import arr from '../assets/icons/arr.svg'
+import arr2 from '../assets/icons/arr-tab.svg'
 
-interface TaskTableModel {
-    TASKS: TaskStoreModel[],
-    passToDelete: Function,
-    passToEdit: Function,
-    unselect: Function
-}
-
-const TaskTable: React.FC<TaskTableModel> = ({ TASKS, passToDelete, passToEdit, unselect}) => {
+const TaskTable: React.FC = observer(() => {
     const columns: any = useMemo(() => [
         { Header: 'id', accessor: 'id' },
         { Header: 'activity', accessor: 'activity' },
@@ -41,7 +37,7 @@ const TaskTable: React.FC<TaskTableModel> = ({ TASKS, passToDelete, passToEdit, 
         pageCount,
         setGlobalFilter
     } = useTable(
-        {columns: columns, data: TASKS, initialState},
+        {columns: columns, data: getTasksStore.tasks, initialState},
         useGlobalFilter,
         useSortBy,
         usePagination
@@ -49,26 +45,12 @@ const TaskTable: React.FC<TaskTableModel> = ({ TASKS, passToDelete, passToEdit, 
 
     let { globalFilter, pageIndex, pageSize } = state
 
-    const rowSelect = (i: number, allValues: TaskStoreModel) => {
-        let tableRows = [...document.getElementsByClassName('rw')]
-        if (tableRows[i].classList.contains('selected')) {
-            tableRows[i].classList.remove('selected')
-            document.body.classList.remove('unlock-edit-delete')
-        } else {
-            for (const r of tableRows) r.classList.remove('selected')
-            tableRows[i].classList.add('selected')
-            document.body.classList.add('unlock-edit-delete')
-        }
-        passToDelete(allValues);
-        passToEdit(allValues);
-    }
-
     return <section className='task-table'>
         <form className='filter-box'>
             <label htmlFor='filter'>Search:</label>
             <input id='filter' type='text' value={globalFilter || ''} onChange={e => {
                 setGlobalFilter(e.target.value);
-                unselect();
+                unselectStore.unselect();
             }} />
         </form>
         <table {...getTableProps()}>
@@ -87,7 +69,7 @@ const TaskTable: React.FC<TaskTableModel> = ({ TASKS, passToDelete, passToEdit, 
             <tbody {...getTableBodyProps()}>
                 {page.map((row: any, i: number) => {
                     prepareRow(row)
-                    return <tr className='rw' onClick={() => rowSelect(i, row.values)} key={i} {...row.getRowProps()}>
+                    return <tr className='rw' onClick={() => {selectStore.rowSelect(i, row.values);}} key={i} {...row.getRowProps()}>
                         {row.cells.map((cell: any, i: number) => {
                             return <td key={i} {...cell.getCellProps()}>{cell.render('Cell')}</td>
                         })}
@@ -97,12 +79,12 @@ const TaskTable: React.FC<TaskTableModel> = ({ TASKS, passToDelete, passToEdit, 
         </table>
         <div className="total">
             <h5>total tasks:</h5>
-            <span>{TASKS.length}</span>
+            <span>{getTasksStore.tasks.length}</span>
         </div>
         <section className="ctrl">
             <select value={pageSize} onChange={e => {
                 setPageSize(Number(+e.target.value));
-                unselect();
+                unselectStore.unselect();
             }}>
                 {[initialPageSize, initialPageSize*2, initialPageSize*3].map((pageSize: number) => (
                     <option key={pageSize} value={pageSize}>{pageSize}</option>
@@ -111,11 +93,11 @@ const TaskTable: React.FC<TaskTableModel> = ({ TASKS, passToDelete, passToEdit, 
             <section className="ctrl-page">
                 <img src={arr} onClick={() => {
                     gotoPage(0);
-                    unselect();
+                    unselectStore.unselect();
                 }} alt="first page" />
                 <img src={arr} onClick={() => {
                     previousPage();
-                    unselect();
+                    unselectStore.unselect();
                 }} alt="prev page" />
                 <span>
                     <p>{pageIndex + 1}</p>
@@ -124,14 +106,14 @@ const TaskTable: React.FC<TaskTableModel> = ({ TASKS, passToDelete, passToEdit, 
                 </span>
                 <img src={arr} onClick={() => {
                     nextPage();
-                    unselect();
+                    unselectStore.unselect();
                 }} alt="next page" />
                 <img id='last-page' src={arr} onClick={() => {
                     gotoPage(pageCount - 1);
-                    unselect();
+                    unselectStore.unselect();
                 }} alt="last page" />
             </section>
         </section>
     </section>
-}
+})
 export default TaskTable
