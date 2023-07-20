@@ -1,5 +1,5 @@
 import { action, makeObservable } from 'mobx'
-import { getTasksStore } from "./getTasksStore"
+import { getTasksStore } from "./GetTasksStore"
 
 export class DeleteTaskStore {
     constructor() {
