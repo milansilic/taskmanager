@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 import { observer } from 'mobx-react-lite'
-import { getTasksStore } from '../stores/GetTasksStore'
+import { httpClient } from '../stores/HttpClient'
 import TaskTable from '../components/TaskTable'
 import TaskForm from '../components/TaskForm'
 import DeleteModal from '../components/DeleteModal'
 import '../styles/pages/mainGrid.scss'
 
 const MainGrid: React.FC = observer(() => {
-   
-   useEffect(()=>{getTasksStore.getTasks()},[])
+
+   useEffect(()=>{httpClient.getTasks()},[])
  
    return <>
       <DeleteModal/>

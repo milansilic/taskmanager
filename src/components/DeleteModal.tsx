@@ -1,12 +1,12 @@
 import { observer } from 'mobx-react-lite'
-import { deleteTaskStore } from '../stores/DeleteTaskStore'
+import { httpClient } from '../stores/HttpClient'
 import { selectStore } from '../stores/SelectStore'
 import { unselectStore } from '../stores/UnselectStore'
 import '../styles/components/deleteModal.scss'
 
 const DeleteModal: React.FC = observer(() => {
     const executeDelete = ()=> {
-        deleteTaskStore.deleteTask(selectStore.selectedRow.id)
+        httpClient.deleteTask(selectStore.selectedRow.id)
         unselectStore.unselect()
     }
 

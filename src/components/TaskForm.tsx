@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { observer } from 'mobx-react-lite'
-import { postTaskStore } from '../stores/PostTaskStore'
 import { unselectStore } from '../stores/UnselectStore'
 import '../styles/components/taskForm.scss'
+import { httpClient } from '../stores/HttpClient'
 
 const TaskForm: React.FC = observer(() => {
     const [activity, setActivity] = useState('');
@@ -16,7 +16,7 @@ const TaskForm: React.FC = observer(() => {
     const allSets2 = [setImportanceLevel, setUrgencyLevel];
 
     const addTask = () => {
-        postTaskStore.postTasks(activity, frequency, resources, price, importanceLevel, urgencyLevel);
+        httpClient.postTask(activity, frequency, resources, price, importanceLevel, urgencyLevel);
         allSets1.map(set => set(''));
         allSets2.map(set => set(0));
         let ele = [...document.querySelectorAll("[name=il], [name=ul]")];    

@@ -1,5 +1,5 @@
 import { makeObservable, observable, action } from 'mobx';
-import { objectModel } from '../stores/GetTasksStore'
+import { objectModel } from './HttpClient'
 
 export class SelectStore {
     selectedRow: objectModel = {

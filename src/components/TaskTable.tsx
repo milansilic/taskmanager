@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import { useTable, usePagination, useSortBy, useGlobalFilter } from 'react-table'
 import { observer } from 'mobx-react-lite'
 import { selectStore } from '../stores/SelectStore'
-import { getTasksStore } from '../stores/GetTasksStore'
+import { httpClient } from '../stores/HttpClient'
 import { unselectStore } from '../stores/UnselectStore'
 import '../styles/components/taskTable.scss'
 import arr from '../assets/icons/arr.svg'
@@ -37,7 +37,7 @@ const TaskTable: React.FC = observer(() => {
         pageCount,
         setGlobalFilter
     } = useTable(
-        {columns: columns, data: getTasksStore.tasks, initialState},
+        {columns: columns, data: httpClient.tasks, initialState},
         useGlobalFilter,
         useSortBy,
         usePagination
@@ -79,7 +79,7 @@ const TaskTable: React.FC = observer(() => {
         </table>
         <div className="total">
             <h5>total tasks:</h5>
-            <span>{getTasksStore.tasks.length}</span>
+            <span>{httpClient.tasks.length}</span>
         </div>
         <section className="ctrl">
             <select value={pageSize} onChange={e => {

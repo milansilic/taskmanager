@@ -1,7 +1,6 @@
 import { makeObservable, action } from 'mobx';
 
-export class UnselectStore {
-    
+export class UnselectStore {   
     constructor() {
         makeObservable(this, {
             unselect: action
@@ -13,5 +12,4 @@ export class UnselectStore {
         document.body.classList.remove('unlock-edit-delete', 'delete-check');
     }
 }
-
 export const unselectStore = new UnselectStore();
