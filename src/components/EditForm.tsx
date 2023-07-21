@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { observer } from 'mobx-react-lite'
 import { httpClient, objectModel } from '../stores/HttpClient'
-import { unselectStore } from '../stores/UnselectStore'
+import Unselect from '../services/unselect'
+
 import '../styles/components/editForm.scss'
 
 interface EditFormModel {
@@ -18,7 +19,7 @@ const EditForm: React.FC<EditFormModel> = observer(({ selectedRow, nav }) => {
    const [editedUrgencyLevel, setEditedUrgencyLevel] = useState(selectedRow.urgencyLevel);
 
    const back = () => {
-      unselectStore.unselect();
+      Unselect.unselect();
       nav('/', {replace: true});
    }
 

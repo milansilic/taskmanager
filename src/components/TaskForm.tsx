@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { observer } from 'mobx-react-lite'
-import { unselectStore } from '../stores/UnselectStore'
-import '../styles/components/taskForm.scss'
 import { httpClient } from '../stores/HttpClient'
+import Unselect from '../services/unselect'
+import '../styles/components/taskForm.scss'
 
 const TaskForm: React.FC = observer(() => {
     const [activity, setActivity] = useState('');
@@ -25,7 +25,7 @@ const TaskForm: React.FC = observer(() => {
 
     onkeydown = e => {
         switch (e.key) {
-            case "Escape": unselectStore.unselect();
+            case "Escape": Unselect.unselect()
                 break;
         }
     }
@@ -87,7 +87,7 @@ const TaskForm: React.FC = observer(() => {
                     else if (urgencyLevel === 0) alert('field "Urgency level" is required')
                     else {
                         addTask();
-                        unselectStore.unselect();
+                        Unselect.unselect();
                     }
                 }}>add task<i></i></button>
             </div>

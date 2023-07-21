@@ -3,7 +3,7 @@ import { useTable, usePagination, useSortBy, useGlobalFilter } from 'react-table
 import { observer } from 'mobx-react-lite'
 import { selectStore } from '../stores/SelectStore'
 import { httpClient } from '../stores/HttpClient'
-import { unselectStore } from '../stores/UnselectStore'
+import Unselect from '../services/unselect'
 import '../styles/components/taskTable.scss'
 import arr from '../assets/icons/arr.svg'
 import arr2 from '../assets/icons/arr-tab.svg'
@@ -50,7 +50,7 @@ const TaskTable: React.FC = observer(() => {
             <label htmlFor='filter'>Search:</label>
             <input id='filter' type='text' value={globalFilter || ''} onChange={e => {
                 setGlobalFilter(e.target.value);
-                unselectStore.unselect();
+                Unselect.unselect();
             }} />
         </form>
         <table {...getTableProps()}>
@@ -84,7 +84,7 @@ const TaskTable: React.FC = observer(() => {
         <section className="ctrl">
             <select value={pageSize} onChange={e => {
                 setPageSize(Number(+e.target.value));
-                unselectStore.unselect();
+                Unselect.unselect();
             }}>
                 {[initialPageSize, initialPageSize*2, initialPageSize*3].map((pageSize: number) => (
                     <option key={pageSize} value={pageSize}>{pageSize}</option>
@@ -93,11 +93,11 @@ const TaskTable: React.FC = observer(() => {
             <section className="ctrl-page">
                 <img src={arr} onClick={() => {
                     gotoPage(0);
-                    unselectStore.unselect();
+                    Unselect.unselect();
                 }} alt="first page" />
                 <img src={arr} onClick={() => {
                     previousPage();
-                    unselectStore.unselect();
+                    Unselect.unselect();
                 }} alt="prev page" />
                 <span>
                     <p>{pageIndex + 1}</p>
@@ -106,11 +106,11 @@ const TaskTable: React.FC = observer(() => {
                 </span>
                 <img src={arr} onClick={() => {
                     nextPage();
-                    unselectStore.unselect();
+                    Unselect.unselect();
                 }} alt="next page" />
                 <img id='last-page' src={arr} onClick={() => {
                     gotoPage(pageCount - 1);
-                    unselectStore.unselect();
+                    Unselect.unselect();
                 }} alt="last page" />
             </section>
         </section>
