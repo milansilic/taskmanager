@@ -37,7 +37,7 @@ const TaskTable: React.FC = observer(() => {
         pageCount,
         setGlobalFilter
     } = useTable(
-        {columns: columns, data: httpClient.tasks, initialState},
+        { columns: columns, data: httpClient.tasks, initialState },
         useGlobalFilter,
         useSortBy,
         usePagination
@@ -69,7 +69,7 @@ const TaskTable: React.FC = observer(() => {
             <tbody {...getTableBodyProps()}>
                 {page.map((row: any, i: number) => {
                     prepareRow(row)
-                    return <tr className='rw' onClick={() => {selectStore.rowSelect(i, row.values);}} key={i} {...row.getRowProps()}>
+                    return <tr className='rw' onClick={() => {selectStore.rowSelect(i, row.values)}} key={i} {...row.getRowProps()}>
                         {row.cells.map((cell: any, i: number) => {
                             return <td key={i} {...cell.getCellProps()}>{cell.render('Cell')}</td>
                         })}
@@ -86,7 +86,7 @@ const TaskTable: React.FC = observer(() => {
                 setPageSize(Number(+e.target.value));
                 Unselect.unselect();
             }}>
-                {[initialPageSize, initialPageSize*2, initialPageSize*3].map((pageSize: number) => (
+                {[initialPageSize, initialPageSize * 2, initialPageSize * 3].map((pageSize: number) => (
                     <option key={pageSize} value={pageSize}>{pageSize}</option>
                 ))}
             </select>

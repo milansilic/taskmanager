@@ -32,6 +32,12 @@ export class SelectStore {
             document.body.classList.add('unlock-edit-delete')
         }
     }
-}
 
+    setActivity(act: string) { this.selectedRow.activity = act }
+    setFrequency(frq: string) { this.selectedRow.frequency = frq }
+    setResources(res: string) { this.selectedRow.resources = res }
+    setPrice(pri: string) { this.selectedRow.price = pri }
+    setImpLvl(il: number) { this.selectedRow.importanceLevel = il }
+    setUrgLvl(ul: number) { this.selectedRow.urgencyLevel = ul }
+}
 export const selectStore = new SelectStore();
