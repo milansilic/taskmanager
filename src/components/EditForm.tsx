@@ -10,7 +10,6 @@ interface EditFormModel {
 }
 
 const EditForm: React.FC<EditFormModel> = observer(({selectedRow}) => {   
-   
    const navigate = useNavigate();
    const back = () => {
       Unselect.unselect();
@@ -67,14 +66,12 @@ const EditForm: React.FC<EditFormModel> = observer(({selectedRow}) => {
             </fieldset>
          </form>
          <aside>
-            <footer>
-               <div className="center-fl">
+               <div className="center-fl btn-zone">
                   <button className="btn-edit pointer" onClick={() => executeEdit()}>edit task<i></i></button>
                </div>
-               <div className="center-fl">
+               <div className="center-fl btn-zone">
                   <button className="btn-cancel pointer" onClick={() => back()}>cancel<i></i></button>
                </div>
-            </footer>
          </aside>
       </main>
    </>

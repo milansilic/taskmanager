@@ -3,12 +3,14 @@ import { observer } from 'mobx-react-lite'
 import { httpClient } from '../stores/HttpClient'
 import { selectStore } from '../stores/SelectStore'
 import TaskTable from '../components/TaskTable'
-import TaskForm from '../components/TaskForm'
+import TaskForm from '../components/TaskForm';
 import DeleteModal from '../components/DeleteModal'
 import Unselect from '../services/unselect'
-import '../styles/pages/mainGrid.scss'
+import '../styles/pages/mainPage.scss'
+
 
 const MainPage: React.FC = observer(() => {
+
    onkeydown = (e) => {
       switch (e.key) {
          case "Escape":
@@ -22,7 +24,7 @@ const MainPage: React.FC = observer(() => {
             break;
       }
    }
-
+   
    useEffect(() => { httpClient.getTasks() }, [])
 
    return <>

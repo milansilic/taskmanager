@@ -8,98 +8,29 @@ aside {
       width: 16rem;
       margin-left: 5vw;
    }
-
-   form {
-      margin-bottom: 1.2rem;
-   }
-
-   footer div {
-      width: 100%;
-      height: 94px;
-
-      button {
-         outline: none;
-         width: 12ch;
-         transform: translateY(0%);
-         padding: 1rem 0;
-         margin: 0 auto;
-         font-family: 'Outfit', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-         font-size: 1.063rem;
-         letter-spacing: .03rem;
-         text-transform: capitalize;
-         transition-timing-function: ease-out;
-      }
-
-      button:hover {
-         padding: 1.2rem 0;
-         width: 14ch;
-         color: var(--col-light);
-         letter-spacing: .14rem;
-      }
-
-      button::before {
-         content: "";
-         position: absolute;
-         inset: 2px;
-      }
-
-      button span {
-         width: 100%;
-      }
-
-      button i {
-         position: absolute;
-         inset: 0;
-      }
-
-      button i::before,
-      button i::after {
-         content: "";
-         position: absolute;
-         width: 6px;
-         height: 6px;
-         border: 1px solid var(--col-bckgrnd-lightest);
-         transition: .25s;
-      }
-
-      button i::before {
-         left: 100.5%;
-         top: -1px;
-         transform: translate(-50%, -50%);
-      }
-
-      button i::after {
-         left: -0.5%;
-         bottom: -1px;
-         transform: translate(-50%, 50%);
-      }
-
-      button:hover i::before,
-      button:hover i::after {
-         width: .8rem;
-         height: 0px;
-         border: 2px solid var(--col-light);
-         background-color: var(--col-light);
-      }
-
-      button:hover i::before {
-         left: 20%;
-      }
-
-      button:hover i::after {
-         left: 80%;
-      }
-   }
 }
 
-fieldset.txt,
-fieldset.stars {
+aside fieldset {
    position: relative;
    width: 100%;
+
+   p {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      font-size: .75rem;
+      font-weight: 900;
+      color: var(--col-light);
+      letter-spacing: .08em;
+   }
 }
 
 fieldset.txt {
    margin-bottom: 2.2rem;
+   
+   &:nth-of-type(4) {
+      margin-bottom: 1.8rem;
+   }
 
    input::first-letter {
       text-transform: capitalize;
@@ -143,6 +74,7 @@ fieldset.txt {
       color: var(--col-grey);
       font-size: 1.063rem;
       letter-spacing: .03rem;
+      text-transform: capitalize;
       transition: .2s ease-out;
       z-index: 10;
       cursor: text;
@@ -159,6 +91,10 @@ fieldset.txt {
       background: var(--col-light);
       transition: all 200ms ease-out;
    }
+
+   p {
+      transform: translateY(120%);
+   }
 }
 
 fieldset.stars {
@@ -167,13 +103,13 @@ fieldset.stars {
    justify-content: center;
    flex-direction: row-reverse;
    padding-top: 28px;
-   margin-top: 24px;
+   margin-top: 25px;
 
    input {
       display: none;
    }
 
-   label {      
+   label { 
       -webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
       clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
       width: 30px;
@@ -200,7 +136,7 @@ fieldset.stars {
 
    h6 {
       position: absolute;
-      top: 0;
+      top: 4px;
       left: 0;
       width: 100%;
       color: var(--col-grey);
@@ -214,12 +150,98 @@ fieldset.stars {
    input:checked~h6 {
       color: var(--col-light);
    }
+
+   p {
+      transform: translateY(98%);
+   }
+}
+
+.btn-zone {
+   width: 100%;
+   height: 92px;
+
+   &:first-of-type {
+      margin-top: 1.3rem;
+   }
+
+   button {
+      outline: none;
+      width: 12ch;
+      padding: 1rem 0;
+      margin: 0 auto;
+      font-family: 'Outfit', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-size: 1.063rem;
+      letter-spacing: .03rem;
+      text-transform: capitalize;
+      transition-timing-function: ease-out;
+   }
+
+   button:hover {
+      padding: 1.2rem 0;
+      width: 14ch;
+      color: var(--col-light);
+      letter-spacing: .14rem;
+   }
+
+   button::before {
+      content: "";
+      position: absolute;
+      inset: 2px;
+   }
+
+   button span {
+      width: 100%;
+   }
+
+   button i {
+      position: absolute;
+      inset: 0;
+   }
+
+   button i::before,
+   button i::after {
+      content: "";
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border: 1px solid var(--col-bckgrnd-lightest);
+      transition: .25s;
+   }
+
+   button i::before {
+      left: 100.5%;
+      top: -1px;
+      transform: translate(-50%, -50%);
+   }
+
+   button i::after {
+      left: -0.5%;
+      bottom: -1px;
+      transform: translate(-50%, 50%);
+   }
+
+   button:hover i::before,
+   button:hover i::after {
+      width: .8rem;
+      height: 0px;
+      border: 2px solid var(--col-light);
+      background-color: var(--col-light);
+   }
+
+   button:hover i::before {
+      left: 20%;
+   }
+
+   button:hover i::after {
+      left: 80%;
+   }
 }
 
 .btn-add {
    background-color: unset;
    border: 1px solid var(--col-grey);
    color: var(--col-grey);
+   transform: translateY(0%);
    transition: padding .22s, color .22s, width .22s, letter-spacing .22s, border .1s, ;
 
    &:focus {
@@ -232,12 +254,20 @@ fieldset.stars {
    opacity: 0;
    border: 1px solid var(--col-light);
    color: var(--col-light);
-   transform: translateX(200px);
+   transform: translateX(200px) scale(.9);
+   cursor: auto;
 }
 
 .btn-edit {
    background-color: var(--col-analogous1);
    transition: padding .22s, color .22s, width .22s, letter-spacing .22s, border .1s, opacity .2s .2s, transform .2s .2s;
+
+   a {
+      display: block;
+      color: var(--col-light);
+      text-decoration: none;
+      cursor: auto;
+   }
 }
 
 .btn-delete {
@@ -252,25 +282,27 @@ fieldset.stars {
    transition: .22s ease-out;
 }
 
-.unlock-edit-delete main aside footer .btn-edit,
-.unlock-edit-delete main aside footer .btn-delete {
+.unlock-edit-delete main aside .btn-edit,
+.unlock-edit-delete main aside .btn-delete {
    opacity: 1;
    transform: translateX(0px);
    color: var(--col-light);
+   cursor: pointer;
+   a {cursor: pointer;}
 }
 
-.unlock-edit-delete main aside footer .btn-edit {
+.unlock-edit-delete main aside .btn-edit {
    transition: padding .22s, color .22s, width .22s, letter-spacing .22s, border .1s, opacity .2s 0s, transform .2s 0s;
 }
 
-.unlock-edit-delete main aside footer .btn-delete {
+.unlock-edit-delete main aside .btn-delete {
    transition: padding .22s, color .22s, width .22s, letter-spacing .22s, border .1s, opacity .2s .2s, transform .2s .2s;
 }
 
 .btn-add,
 .btn-cancel,
-.unlock-edit-delete main aside footer .btn-edit,
-.unlock-edit-delete main aside footer .btn-delete {
+.unlock-edit-delete main aside .btn-edit,
+.unlock-edit-delete main aside .btn-delete {
    &:hover {
       border: 2px solid var(--col-light);
    }

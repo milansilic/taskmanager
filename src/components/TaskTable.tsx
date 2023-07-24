@@ -20,7 +20,7 @@ const TaskTable: React.FC = observer(() => {
     ], []);
 
     let initialPageSize: number = 8;
-    let initialState: any = { pageSize: initialPageSize, pageIndex: 0 };
+    let initialState: object = { pageSize: initialPageSize, pageIndex: 0};
 
     const {
         getTableProps,

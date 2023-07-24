@@ -4,13 +4,17 @@
         margin-bottom: 3rem;
     }
 
-    form { 
+    form {
         flex-grow: 1;
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        justify-content: space-between;
-        gap: 4rem 4%;
+        grid-template-columns: 44% 44%;
+        justify-content: space-evenly;
+        gap: 4rem 0%;
         padding: 2% 0 0 8%;
+
+        @media (min-width:1440px) {
+            grid-template-columns: 400px 400px;
+        }
 
         label,
         input {
@@ -26,6 +30,7 @@
 
         input {
             width: 30ch;
+            width: 100%;
             background-color: var(--col-bckgrnd-light);
             padding: 1rem;
             font-family: "Averta", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
@@ -39,5 +44,8 @@
         width: 22%;
         margin-left: 0;
     }
-}
 
+    button {
+        transform: translateY(0%);
+    }
+}
