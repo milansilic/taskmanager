@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import { useTable, usePagination, useSortBy, useGlobalFilter } from 'react-table'
 import { observer } from 'mobx-react-lite'
 import { selectStore } from '../stores/SelectStore'
+import { taskFormSt } from '../stores/TaskFormStore'
 import { httpClient } from '../stores/HttpClient'
 import Unselect from '../services/unselect'
 import '../styles/components/taskTable.scss'
@@ -69,7 +70,11 @@ const TaskTable: React.FC = observer(() => {
             <tbody {...getTableBodyProps()}>
                 {page.map((row: any, i: number) => {
                     prepareRow(row)
-                    return <tr className='rw' onClick={() => {selectStore.rowSelect(i, row.values)}} key={i} {...row.getRowProps()}>
+                    return <tr 
+                    className='rw' 
+                    onClick={() => {selectStore.rowSelect(i, row.values); taskFormSt.requiredReset();}} 
+                    key={i} 
+                    {...row.getRowProps()}>
                         {row.cells.map((cell: any, i: number) => {
                             return <td key={i} {...cell.getCellProps()}>{cell.render('Cell')}</td>
                         })}

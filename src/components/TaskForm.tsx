@@ -67,7 +67,7 @@ const TaskForm: React.FC = observer(() => {
                 <button className="btn-add pointer" onClick={e => taskFormSt.handleAdd(e)}>add task<i></i></button>
             </div>
             <div className="btn-zone center-fl">
-                <button className="btn-edit"><Link to='edit'>edit<i></i></Link></button>
+                <button className="btn-edit" onClick={()=> taskFormSt.requiredReset()}><Link to='edit'>edit<i></i></Link></button>
             </div>
             <div className="btn-zone center-fl">
                 <button className="btn-delete" onClick={e => taskFormSt.handleDelete(e)}>delete<i></i></button>

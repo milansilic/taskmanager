@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { observer } from 'mobx-react-lite'
 import { httpClient } from '../stores/HttpClient'
 import { selectStore } from '../stores/SelectStore'
+import { taskFormSt } from '../stores/TaskFormStore'
 import TaskTable from '../components/TaskTable'
 import TaskForm from '../components/TaskForm';
 import DeleteModal from '../components/DeleteModal'
@@ -14,7 +15,8 @@ const MainPage: React.FC = observer(() => {
    onkeydown = (e) => {
       switch (e.key) {
          case "Escape":
-            Unselect.unselect()
+            Unselect.unselect();
+            taskFormSt.requiredReset();
             break;
          case "Enter":
             if (document.body.classList.contains('delete-check')) {
